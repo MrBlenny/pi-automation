@@ -17,20 +17,20 @@ app.get('/', (req, res) => {
 })
 
 app.get('/speakers/down', (req, res) => {
-  relayGroup1.write(Gpio.LOW)
-  relayGroup2.write(Gpio.HIGH)
+  relayGroup1.writeSync(Gpio.LOW)
+  relayGroup2.writeSync(Gpio.HIGH)
   res.send('down')
 })
 
 app.get('/speakers/up', (req, res) => {
-  relayGroup1.write(Gpio.HIGH)
-  relayGroup2.write(Gpio.LOW)
+  relayGroup1.writeSync(Gpio.HIGH)
+  relayGroup2.writeSync(Gpio.LOW)
   res.send('up')
 })
 
 app.get('/speakers/both', (req, res) => {
-  relayGroup1.write(Gpio.LOW)
-  relayGroup2.write(Gpio.LOW)
+  relayGroup1.writeSync(Gpio.LOW)
+  relayGroup2.writeSync(Gpio.LOW)
   res.send('both')
 })
 
