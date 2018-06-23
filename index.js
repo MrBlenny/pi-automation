@@ -4,6 +4,18 @@ const app = express()
 const relayGroup1 = new Gpio(2, 'out');
 const relayGroup2 = new Gpio(3, 'out');
 
+app.get('/', (req, res) => {
+  res.send(
+    `<html>
+      <table>
+        <tr><td><a href="/speakers/down">speakers/down</a></td><td>Turns the downstairs speakers on</td></tr>
+        <tr><td><a href="/speakers/up">speakers/up</a></td><td>Turns the upstairs speakers on</td></tr>
+        <tr><td><a href="/speakers/both">speakers/both</a></td><td>Turns the both sets of speakers on</td></tr>
+      </table>
+    </html>`
+  )
+})
+
 app.get('/speakers/down', (req, res) => {
   relayGroup1.write(Gpio.LOW)
   relayGroup2.write(Gpio.HIGH)
