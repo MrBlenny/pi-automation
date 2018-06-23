@@ -2,7 +2,7 @@ const express = require('express')
 const Gpio = require('onoff').Gpio;
 const app = express()
 const relayGroup1 = new Gpio(2, 'out');
-const relayGroup1 = new Gpio(3, 'out');
+const relayGroup2 = new Gpio(3, 'out');
 
 app.get('/speakers/down', (req, res) => {
   relayGroup1.write(Gpio.LOW)
