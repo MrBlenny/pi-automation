@@ -34,4 +34,5 @@ app.get('/speakers/both', (req, res) => {
   res.send('both')
 })
 
+console.log('Server Running on port 3000')
 app.listen(3000)
