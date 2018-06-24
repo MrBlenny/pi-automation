@@ -1,59 +1,37 @@
 import React from 'react';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
+import http from 'axios'
 
-class SwitchLabels extends React.Component {
-  componentDidMount() {
-    
-  }
-  state = {
-    down: true,
-    up: true,
-  };
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
-
+class SpeakersLocation extends React.Component {
   render() {
     return (
       <Card>
         <CardContent>
-          <Typography gutterBottom variant="subheading" component="h2">
-            QLS Amp Speakers
+          <Typography gutterBottom color="textSecondary" component="h2">
+            QLS Amplifier
           </Typography>
-          <FormGroup column>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={this.state.down}
-                  onChange={this.handleChange('down')}
-                  value="down"
-                  color="primary"
-                />
-              }
-              label="Downstairs"
-            />
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={this.state.up}
-                  onChange={this.handleChange('up')}
-                  value="up"
-                  color="primary"
-                />
-              }
-              label="Outside"
-            />
-          </FormGroup>
+          <Typography component="p">
+            Change the speaker output
+          </Typography>
         </CardContent>
+        <CardActions>
+          <Button size="small" color="primary" onClick={ () => http.get('/speakers/down') }>
+            Down
+          </Button>
+          <Button size="small" color="primary" onClick={ () => http.get('/speakers/up') }>
+            Outside
+          </Button>
+          <Button size="small" color="primary" onClick={ () => http.get('/speakers/both') }>
+            Both
+          </Button>
+        </CardActions>
       </Card>
     );
   }
 }
 
-export default SwitchLabels;
+export default SpeakersLocation;
