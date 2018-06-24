@@ -14,5 +14,6 @@ This server runs on a raspberry pi and controls various home automation function
 
 ## Deploy
 * `yarn build` to build the frontend
-* commit and push and the pull on the pi
-* restart the server process
+* commit and push
+* `git pull` on the pi
+* restart the server process using `pm2 restart pi-automation`
