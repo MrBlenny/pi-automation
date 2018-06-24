@@ -6,7 +6,7 @@ const app = express()
 
 // Mock GPIO if required
 const Gpio = (pin, type) => {
-  if (Gpio.accessible) {
+  if (GpioRaw.accessible) {
     return new GpioRaw(pin, type);
   } else {
     return {
@@ -14,7 +14,6 @@ const Gpio = (pin, type) => {
     }
   }
 }
-
 
 // Create GPIO groups
 const relayGroup1 = Gpio(2, 'out');
