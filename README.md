@@ -1,6 +1,6 @@
 # PI Automation
 
-This server runs on a raspberry pi and controls various home automation functions.
+This server runs on a raspberry pi and controls various home automation functions via GPIO.
 
 ## Usage
 * Make sure `pm2` is installed and configured on the pi
