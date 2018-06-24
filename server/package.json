@@ -1,19 +1,16 @@
 {
-  "name": "pi-automation",
+  "name": "pi-automation-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "tunnel": "lt --port 3000 --subdomain goober-pi",
-    "start:tunnel": "concurrently \"npm run start\" \"npm run tunnel\""
+    "start": "node ./server/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^3.6.0",
     "express": "^4.16.3",
-    "localtunnel": "^1.9.0",
     "onoff": "^3.1.0"
   }
 }
