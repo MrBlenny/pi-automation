@@ -1,13 +1,13 @@
 const express = require('express')
-const GpioRaw = require('onoff').Gpio;
+const Gpio = require('onoff').Gpio;
 const { join } = require('path')
 
 const app = express()
 
 // Mock GPIO if required
-const Gpio = (pin, type) => {
-  if (GpioRaw.accessible) {
-    return new GpioRaw(pin, type);
+const GpioMocked = (pin, type) => {
+  if (Gpio.accessible) {
+    return new Gpio(pin, type);
   } else {
     return {
       writeSync: () => {}
@@ -16,8 +16,8 @@ const Gpio = (pin, type) => {
 }
 
 // Create GPIO groups
-const relayGroup1 = Gpio(2, 'out');
-const relayGroup2 = Gpio(3, 'out');
+const relayGroup1 = GpioMocked(2, 'out');
+const relayGroup2 = GpioMocked(3, 'out');
 
 app.use(express.static(join(__dirname, '../client/build')))
 
