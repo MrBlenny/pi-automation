@@ -27,7 +27,7 @@ app.get('/speakers', (req, res) => {
 
 app.get('/speakers/down', (req, res) => {
   relayGroup1.writeSync(Gpio.LOW)
-  relayGroup2.writeSync(Gpio.HIGH)
+  relayGroup2.writeSync(Gpio.LOW)
   res.json({
     message: 'Speakers set to downstairs', 
   })
@@ -43,7 +43,7 @@ app.get('/speakers/up', (req, res) => {
 
 app.get('/speakers/both', (req, res) => {
   relayGroup1.writeSync(Gpio.LOW)
-  relayGroup2.writeSync(Gpio.LOW)
+  relayGroup2.writeSync(Gpio.HIGH)
   res.json({
     message: 'Speakers set inside and outside', 
   })
