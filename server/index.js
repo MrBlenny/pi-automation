@@ -1,6 +1,20 @@
 const express = require('express')
 const Gpio = require('onoff').Gpio;
-const { join } = require('path')
+const { join } = require('path');
+const { spawn } = require('child_process');
+
+const serveoSubDomain = 'goober-pi-automation';
+const port = 3000;
+
+const ssh = spawn('ssh', [
+'-R',
+`${serveoSubDomain}:80:localhost:${port}`,
+'serveo.net',
+]);
+
+process.on('exit', () => ssh.kill());
+
+
 
 const app = express()
 
@@ -50,4 +64,5 @@ app.get('/speakers/both', (req, res) => {
 })
 
 console.log('Server Running on port 3000')
-app.listen(3000)
+console.log(`Tunel url: ${serveoSubDomain}.serveo.net`)
+app.listen(port)
